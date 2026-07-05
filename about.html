@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Skyrule Plumbing</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root { --blue: #0c3d6b; --dark: #0a2a4a; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; line-height:1.6; color:#333; scroll-behavior: smooth; }
+    header { background: var(--blue); color: white; padding: 1rem; position: sticky; top: 0; z-index: 100; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; padding: 0 20px; }
+    .logo { font-size: 1.6rem; font-weight: bold; }
+    .hamburger { font-size: 1.8rem; cursor: pointer; display: none; }
+    nav ul { list-style: none; display: flex; gap: 25px; }
+    nav a { color: white; text-decoration: none; font-weight: 600; }
+    .section { padding: 80px 20px; max-width: 1200px; margin: auto; opacity: 0; transform: translateY(60px); transition: all 0.8s ease-out; }
+    .section.visible { opacity: 1; transform: translateY(0); }
+    .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; }
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      nav ul { position: fixed; top: 70px; left: -100%; width: 100%; height: 100vh; background: var(--blue); flex-direction: column; align-items: center; padding-top: 60px; transition: 0.4s; }
+      nav ul.show { left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">Skyrule Plumbing</div>
+      <div class="hamburger" id="hamburger">☰</div>
+      <nav>
+        <ul id="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 style="text-align:center; margin-bottom:40px;">About Skyrule Plumbing Services</h2>
+    <p style="font-size:1.2rem; text-align:center; max-width:800px; margin:auto;">We are a trusted plumbing company based in Galadimawa, Abuja. With years of hands-on experience, we deliver fast, honest, and professional plumbing solutions for homes and businesses.</p>
+  </section>
+
+  <a href="https://wa.me/2348150788490" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <footer style="background:#0a2a4a; color:white; text-align:center; padding:40px 20px;">
+    <p><strong>Skyrule Plumbing Services</strong></p>
+    <p>By Celestine Church, Ring Road 2, Galadimawa Village, Abuja 900107</p>
+    <p>📞 0815 078 8490</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => menu.classList.toggle('show'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
+  </script>
+</body>
+</html>
